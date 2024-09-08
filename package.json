@@ -1,0 +1,21 @@
+{
+    "name": "toGoGG",
+    "version": "1.0.0",
+    "description": "lucks",
+    "main": "src/index.js",
+    "scripts": {
+        "bud": "wrangler deploy",
+        "dev": "wrangler dev --remote",
+        "dev-l": "wrangler dev",
+        "format": "prettier --write 'src/*.{js,css,json,md}'"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20230710.1",
+        "wrangler": "^3.2.0"
+    },
+    "dependencies": {
+        "toGoGG": "file:"
+    }
+}
