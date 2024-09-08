@@ -28,8 +28,8 @@ const replace_dict = {
     'maps.google.com.sg': '$custom_domain',
     'maps.google.com': '$custom_domain',
     'books.google.com': '$custom_domain',
-    'apis.google.com':'$custom_domain',
-    'consent.google.com.hk':'$custom_domain'
+    'apis.google.com': '$custom_domain',
+    'consent.google.com.hk': '$custom_domain'
 }
 
 addEventListener('fetch', (event) => {
