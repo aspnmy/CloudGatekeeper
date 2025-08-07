@@ -49,7 +49,7 @@ const USAGE_HTML = `
     </div>
     
     <h2>更多信息</h2>
-    <p>访问 <a href="https://github.com/your-username/CloudGatekeeper">GitHub仓库</a> 获取更多信息。</p>
+    <p>访问 <a href="https://github.com/aspnmy/CloudGatekeeper">GitHub仓库</a> 获取更多信息。</p>
 </body>
 </html>
 `;
