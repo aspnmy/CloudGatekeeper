@@ -1,7 +1,7 @@
-# toGoGG 项目
+# CloudGatekeeper 项目
 
 ## 项目介绍
-toGoGG 是一个基于 Cloudflare Workers 的动态路由代理系统，支持通过 URL 参数动态加载不同的规则处理请求。
+CloudGatekeeper 是一个基于 Cloudflare Workers 的动态路由代理系统，支持通过 URL 参数动态加载不同的规则处理请求。
 
 ## 快速开始
 

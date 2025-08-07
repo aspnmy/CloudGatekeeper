@@ -1,7 +1,7 @@
 {
-    "name": "toGoGG",
+    "name": "cloudgatekeeper",
     "version": "1.0.0",
-    "description": "lucks",
+    "description": "A dynamic routing proxy system based on Cloudflare Workers with rule-based request handling",
     "main": "index.js",
     "scripts": {
         "bud": "wrangler deploy",
@@ -16,6 +16,6 @@
         "wrangler": "^3.2.0"
     },
     "dependencies": {
-        "toGoGG": "file:"
+        "cloudgatekeeper": "file:"
     }
 }
