@@ -1,5 +1,5 @@
 name = "cloudgatekeeper"
-main = "index.js"
+main = "src/rule/rule_duckduckgo.js"
 compatibility_date = "2024-01-01"
 compatibility_flags = [
     "nodejs_compat"
