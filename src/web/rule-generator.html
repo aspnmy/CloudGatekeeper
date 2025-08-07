@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudGatekeeper规则生成器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>规则生成器</h1>
+        
+        <!-- 添加密码验证区域 -->
+        <div class="auth-form">
+            <div class="form-group">
+                <label>管理密码</label>
+                <input type="password" id="authPassword" placeholder="请输入管理密码">
+            </div>
+        </div>
+
+        <div class="rule-form" style="display: none;">
+            <div class="form-group">
+                <label>规则名称</label>
+                <input type="text" id="ruleName" placeholder="例如: custom">
+            </div>
+            <div class="form-group">
+                <label>目标主机</label>
+                <input type="text" id="targetHost" placeholder="例如: api.example.com">
+            </div>
+            <div class="form-group">
+                <label for="method">请求方法</label>
+                <select id="method" aria-labelledby="method-label">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label id="response-type-label">响应类型</label>
+                <select id="responseType" aria-labelledby="response-type-label">
+                    <option value="json">JSON</option>
+                    <option value="text">Text</option>
+                    <option value="html">HTML</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>自定义处理逻辑</label>
+                <textarea id="customLogic" rows="10" placeholder="// 在这里编写自定义处理逻辑"></textarea>
+            </div>
+            <button onclick="generateRule()">生成规则</button>
+        </div>
+        <div class="rule-preview" style="display: none;">
+            <h3>生成的规则代码</h3>
+            <pre><code id="ruleCode"></code></pre>
+            <button onclick="copyRule()">复制代码</button>
+            <button onclick="downloadRule()">下载规则文件</button>
+        </div>
+    </div>
+
+    <!-- 添加验证按钮 -->
+    <div class="auth-buttons">
+        <button onclick="verifyPassword()">验证密码</button>
+    </div>
+
+    <script src="generator.js"></script>
+</body>
+</html>

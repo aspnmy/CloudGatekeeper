@@ -1,66 +1,89 @@
-# CloudGatekeeper 项目
+# CloudGatekeeper 云守门人
 
 ## 项目介绍
+
 CloudGatekeeper 是一个基于 Cloudflare Workers 的动态路由代理系统，支持通过 URL 参数动态加载不同的规则处理请求。
 
 ## 快速开始
 
 ### 安装
+
 ```bash
 npm install
 ```
 
-### 开发
+### 开发命令
+
 ```bash
 npm run dev      # 远程开发模式
 npm run dev-l    # 本地开发模式
-```
-
-### 部署
-```bash
 npm run bud      # 部署到 Cloudflare Workers
-```
-
-## 目录结构
-```
-toGoGG/
-├── index.js          # 主入口文件
-├── api.js           # API接口封装
-└── src/
-    └── rule/        # 规则文件目录
-        ├── rule_default.js    # 默认规则
-        ├── rule_duckgo.js     # DuckDuckGo搜索规则
-        └── ...                # 其他规则文件
 ```
 
 ## 使用方法
 
-### 基本请求格式
+### 基本访问
+
+- 使用说明页面：`https://gateway.cf.shdrr.org/`
+- 规则生成器：`https://gateway.cf.shdrr.org/?webtools`
+
+### 规则调用
+
+基本格式：
+
 ```
-https://[worker-domain]/?key=[rule-name]&[other-params]
+https://gateway.cf.shdrr.org/?key=规则名称&参数名=参数值
 ```
 
+常用规则示例：
+
+- DuckDuckGo搜索：
+  ```
+  https://gateway.cf.shdrr.org/?key=duckgo&wd=搜索关键词
+  ```
+- 自定义规则：
+  ```
+  https://gateway.cf.shdrr.org/?key=custom&参数名=参数值
+  ```
+
 ### 请求头要求
+
+所有请求需要包含 Authorization 头：
+
 ```
 Authorization: Bearer your-token
 ```
 
-### 示例访问
-1. 默认规则：
+## 规则开发
+
+### 目录结构
+
 ```
-https://gateway.cf.shdrr.org/
+CloudGatekeeper/
+├── index.js          # 主入口文件
+├── api.js           # API接口封装
+└── src/
+    ├── web/         # Web工具目录
+    │   ├── rule-generator.html    # 规则生成器页面
+    │   ├── generator.js          # 生成器逻辑
+    │   └── style.css            # 样式文件
+    └── rule/        # 规则文件目录
+        ├── rule_default.js      # 默认规则
+        ├── rule_duckgo.js       # DuckDuckGo搜索规则
+        └── ...                  # 其他规则文件
 ```
 
-2. DuckDuckGo搜索：
-```
-https://gateway.cf.shdrr.org/?key=duckgo&wd=搜索关键词
-```
+### 规则生成器
 
-## 规则开发指南
+1. 访问 `/?webtools` 进入规则生成器
+2. 输入管理密码（WTPD）验证身份**（WTPD部署在Cloudflare Workers的设置区域，不用明文部署)**
+3. 填写规则配置信息
+4. 生成并下载规则文件
+5. 将规则文件放入 `src/rule` 目录
 
 ### 规则文件模板
+
 ```javascript
-// src/rule/rule_example.js
 export async function handleRequest(request) {
     try {
         // 处理逻辑
@@ -76,30 +99,20 @@ export async function handleRequest(request) {
 }
 ```
 
-### API调用示例
-```javascript
-import { RuleAPI } from './api.js';
+## 特性
 
-const api = new RuleAPI();
-api.setApiKey('your-api-key');
+- 动态规则加载
+- Web可视化规则生成器
+- 完整的CORS支持
+- 请求验证机制
+- 错误处理机制
 
-// 调用特定规则
-const response = await api.callRule('custom', {
-    data: 'your-data'
-});
-```
+## 安全说明
 
-## 注意事项
-1. 所有规则文件必须放在 `src/rule` 目录下
-2. 规则文件命名必须遵循 `rule_*.js` 格式
-3. 每个规则文件必须导出 `handleRequest` 函数
-4. 确保请求包含有效的 Authorization header
-
-## 错误处理
-系统会自动处理以下错误：
-- 规则加载失败
-- 请求处理错误
-- 认证失败
+- 所有请求需要验证 Authorization 头
+- 规则生成器需要管理密码（WTPD）
+- 支持 CORS 安全配置
 
 ## 许可证
+
 ISC

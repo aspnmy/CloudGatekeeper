@@ -13,4 +13,5 @@ MMDD = "gateway.cf.shdrr.org"
 # CF如果做二次域名跳转的话，请将VDST参数设置成二次域名
 VDST = "togogg.shdrr.org"
 
-
+# CF规则生成器的验证密码
+WTPD
