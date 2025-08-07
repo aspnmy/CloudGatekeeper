@@ -1,8 +1,6 @@
-name = "" # todo
+name = "cloudgatekeeper" # todo
 
 main = "index.js"
-compatibility_date = "2024-09-07"
-send_metrics = false
 
 [vars]
 # 配置全局加密变量 需要再控制面板中设置全局变量，再此文件设置为明文全局变量
@@ -14,4 +12,4 @@ MMDD = "gateway.cf.shdrr.org"
 VDST = "togogg.shdrr.org"
 
 # CF规则生成器的验证密码
-WTPD
+WTPD = ""
