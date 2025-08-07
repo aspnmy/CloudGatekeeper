@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="rule-form" style="display: none;">
+        <div class="rule-form hidden">
             <div class="form-group">
                 <label>规则名称</label>
                 <input type="text" id="ruleName" placeholder="例如: custom">
@@ -50,7 +50,7 @@
             </div>
             <button onclick="generateRule()">生成规则</button>
         </div>
-        <div class="rule-preview" style="display: none;">
+        <div class="rule-preview hidden">
             <h3>生成的规则代码</h3>
             <pre><code id="ruleCode"></code></pre>
             <button onclick="copyRule()">复制代码</button>
