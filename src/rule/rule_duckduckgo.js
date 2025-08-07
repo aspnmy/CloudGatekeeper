@@ -1,12 +1,10 @@
-const DUCKDUCKGO_HOST = 'duckduckgo.com';
-
 export async function handleRequest(request) {
     try {
         const url = new URL(request.url);
-        const searchQuery = url.searchParams.get('wd') || '';
+        const searchQuery = url.searchParams.get('wd') ;
         
         // 构建 DuckDuckGo 搜索 URL
-        const searchUrl = new URL('https://' + DUCKDUCKGO_HOST);
+        const searchUrl = new URL('https://duckduckgo.com');
         searchUrl.searchParams.set('q', searchQuery);
         
         // 发起搜索请求

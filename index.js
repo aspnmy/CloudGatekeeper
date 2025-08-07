@@ -30,7 +30,7 @@ const USAGE_HTML = `
         <p>常用规则示例：</p>
         <ul>
             <li>DuckDuckGo搜索：<br>
-            <code>${OPENAI_API_HOST}/?key=duckgo&wd=搜索关键词</code></li>
+            <code>${OPENAI_API_HOST}/?key=duckduckgo&wd=搜索关键词</code></li>
             <li>自定义规则：<br>
             <code>${OPENAI_API_HOST}/?key=custom&参数名=参数值</code></li>
         </ul>
@@ -60,7 +60,7 @@ const WEB_TOOLS_HTML = `
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=/src/web/rule-generator.html">
+    <meta http-equiv="refresh" content="0; url=src/web/rule-generator.html">
     <title>重定向到规则生成器</title>
 </head>
 <body>
@@ -108,13 +108,14 @@ async function handleRequest(request) {
             });
         }
 
-        // 基本请求验证
-        if (!request.headers.get('Authorization')) {
-            return new Response('Missing Authorization header', { status: 401 });
-        }
+        // 网页访问模式不需要传Authorization
+        // // 基本请求验证
+        // if (!request.headers.get('Authorization')) {
+        //     return new Response('Missing Authorization header', { status: 401 });
+        // }
 
         // 从 URL 查询参数获取规则标识
-        const ruleKey = url.searchParams.get('key') || 'default';
+        const ruleKey = url.searchParams.get('key') ;
         
         try {
             // 更新规则文件路径
