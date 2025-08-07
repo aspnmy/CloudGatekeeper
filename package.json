@@ -2,7 +2,7 @@
     "name": "toGoGG",
     "version": "1.0.0",
     "description": "lucks",
-    "main": "src/index.js",
+    "main": "index.js",
     "scripts": {
         "bud": "wrangler deploy",
         "dev": "wrangler dev --remote",
